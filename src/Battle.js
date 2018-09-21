@@ -4,8 +4,9 @@ import './Battle.css';
 class Battle extends Component {
 	constructor(props) {
 		super(props);
+		const fac0 = [this.newFaction()];
 		this.state = {
-			factions: [Faction]
+			factions: fac0
 		};
 	}
 
@@ -13,19 +14,40 @@ class Battle extends Component {
 		return <Faction />;
 	}
 
-	newFaction() {
+	newFacBut() {
 		return (
-			<button className="newFaction">
+			<button className="newFaction" onClick={() => this.addFac()}>
 				New Faction
 			</button>
 		);
 	}
 
+	createFac() {
+		// console.log('New Faction!');
+		return (
+			<Faction />
+		);
+	}
+
+	addFac() {
+		const facs = this.state.factions.slice(0).concat([this.createFac()]);
+		// const facs = [this.createFac(), this.createFac()];
+		this.setState({factions: facs});
+	}
+
+	newFaction() {
+		return (
+			<Faction />
+		);
+	}
+
 	render() {
+		const facs = this.state.factions;
+
 		return (
 			<div className="battle">
-				{this.renderFaction(0)}
-				{this.newFaction()}
+				{facs}
+				{this.newFacBut()}
 			</div>
 		);
 	}
@@ -94,21 +116,21 @@ class Character extends Component {
 		this.state = {
 			name: 'Name',
 			init: 0,
-			editMode: false
+			editMode: true
 		};
 	}
 
 	startEdit() {
 		const newBool = !this.state.editMode;
 		this.setState({editMode: newBool});
-		console.log("Start Editing");
-		console.log("Edit Mode: " + this.state.editMode)
+		// console.log("Start Editing");
+		// console.log("Edit Mode: " + this.state.editMode)
 
 	}
 
 	handleNameChange(event) {
-		const newName = event.target.name;
-		console.log(newName);
+		// const newName = event.target.name;
+		// console.log(newName);
 		this.setState({name: event.target.value});
 	}
 
