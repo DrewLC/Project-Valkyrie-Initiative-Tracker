@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './Valkyrie_Logo.svg';
 import './App.css';
+
+import Battle from './Battle.js';
 
 class App extends Component {
   render() {
@@ -8,11 +10,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">PV Inititiative Tracker</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          This is a tool for the ongoing WIP tabletop RPG, Project Valkyrie.
         </p>
+        <Battle />
       </div>
     );
   }
